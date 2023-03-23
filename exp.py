@@ -20,3 +20,11 @@ for row in rows:
         case = col.find("span", {"lang": "ru"})
         if case:
             print(case.text)
+
+rus_word = "стороны"
+url = "https://wiktionary.org/wiki/" + rus_word
+
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+print(soup.find_all("strong", {"class": "Cyrl headword", "lang": "ru"}))
